@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -20,30 +21,17 @@
     <body>
         <div id="ruffle"></div>
         <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-        <script>
-            var swfobject = {};
+<script>
+const ruffle = window.RufflePlayer.newest();
+const player = ruffle.createPlayer();
 
-            swfobject.embedSWF = function(url, cont) {
-                var ruffle = window.RufflePlayer.newest(),
-                    player = ruffle.createPlayer();
+document.getElementById("ruffle").appendChild(player);
+player.style.width = "100%";
+player.style.height = "100%";
 
-                // Append the player to the container and make it fullscreen
-                document.getElementById(cont).appendChild(player);
-                player.style.width = '100%';
-                player.style.height = '100%';
-
-                // Load the SWF file
-                player.load({ url: url });
-
-                // Update player size on window resize
-                window.addEventListener('resize', function() {
-                    player.style.width = '100%';
-                    player.style.height = '100%';
-                });
-            }
-
-            // Embed the SWF file in fullscreen
-            swfobject.embedSWF('https://cdn.jsdelivr.net/gh/ResonanceRenaissance/swfCDN@main/strikeforce-kitty/1/strikeforce-kitty.swf', 'ruffle');
-        </script>
+player.load({
+  url: "https://cdn.jsdelivr.net/gh/ResonanceRenaissance/swfCDN@main/strikeforce-kitty/1/strikeforce-kitty.swf"
+});
+</script>
     </body>
 </html>
